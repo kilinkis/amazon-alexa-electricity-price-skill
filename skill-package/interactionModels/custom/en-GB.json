@@ -1,0 +1,25 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "electricity price",
+      "intents": [
+        {
+          "name": "GetPriceIntent",
+          "samples": [
+            "how much does electricity cost",
+            "how much does electricity cost right now",
+            "what is the electricity price",
+            "what does power cost",
+            "what is the price of electricity now",
+            "current electricity price",
+            "is electricity expensive",
+            "what does a kilowatt hour cost"
+          ]
+        },
+        { "name": "AMAZON.HelpIntent", "samples": [] },
+        { "name": "AMAZON.StopIntent", "samples": [] },
+        { "name": "AMAZON.CancelIntent", "samples": [] }
+      ]
+    }
+  }
+}
