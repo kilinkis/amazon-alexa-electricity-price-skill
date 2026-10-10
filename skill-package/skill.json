@@ -6,15 +6,31 @@
           "name": "Danish Power Price",
           "summary": "Current electricity price in Denmark.",
           "description": "Tells you what a kilowatt hour of electricity costs right now in Zealand (DK2), including grid fees, taxes and VAT.",
-          "examplePhrases": ["Alexa, open danish power price", "Alexa, ask danish power price what power costs now"]
+          "examplePhrases": [
+            "Alexa, open danish power price",
+            "Alexa, ask danish power price what power costs now"
+          ]
+        },
+        "en-US": {
+          "name": "Danish Power Price",
+          "summary": "Current electricity price in Denmark.",
+          "description": "Tells you what a kilowatt hour of electricity costs right now in Zealand (DK2), including grid fees, taxes and VAT.",
+          "examplePhrases": [
+            "Alexa, open danish power price",
+            "Alexa, ask danish power price what power costs now"
+          ]
         }
       },
       "isAvailableWorldwide": false,
-      "distributionCountries": ["DK"],
+      "distributionCountries": [
+        "DK"
+      ],
       "category": "UTILITIES",
       "testingInstructions": "Say: open danish power price."
     },
-    "apis": { "custom": {} },
+    "apis": {
+      "custom": {}
+    },
     "manifestVersion": "1.0"
   }
 }

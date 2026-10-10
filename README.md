@@ -18,7 +18,7 @@ pnpm price      # prints the current price and what Alexa would say
 
 `api/alexa.ts` serves the same skill as an HTTPS endpoint. It verifies Alexa's request signature and timestamp, and optionally the skill ID.
 
-1. In the [Alexa developer console](https://developer.amazon.com/alexa/console/ask) create a custom skill (English UK, "Start from scratch"), paste `skill-package/interactionModels/custom/en-GB.json` into the JSON editor and save. Copy the **Skill ID**.
+1. In the [Alexa developer console](https://developer.amazon.com/alexa/console/ask) create a custom skill (English US and/or UK, "Start from scratch"), paste the matching file from `skill-package/interactionModels/custom/` (`en-US.json` or `en-GB.json`) into the JSON editor and save. Copy the **Skill ID**.
 2. Deploy:
 
 ```bash
