@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { copenhagenTime, speak } from "../src/prices";
+import { copenhagenTime, speak } from "../src/prices.js";
 
 describe("copenhagenTime", () => {
   it("uses CEST in summer", () => {

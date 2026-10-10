@@ -1,5 +1,5 @@
 import * as Alexa from "ask-sdk-core";
-import { configFromEnv, currentPrice, speak } from "./prices";
+import { configFromEnv, currentPrice, speak } from "./prices.js";
 
 const cfg = configFromEnv();
 

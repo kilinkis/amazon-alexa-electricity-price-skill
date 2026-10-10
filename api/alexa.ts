@@ -1,6 +1,6 @@
 import { SkillRequestSignatureVerifier, TimestampVerifier } from "ask-sdk-express-adapter";
 import type { RequestEnvelope } from "ask-sdk-model";
-import { skill } from "../src/skill";
+import { skill } from "../src/skill.js";
 
 // Vercel entry point. Alexa HTTPS endpoints must verify the request signature and timestamp.
 export async function POST(request: Request): Promise<Response> {
