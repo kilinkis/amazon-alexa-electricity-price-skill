@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
-import { copenhagenTime, speak } from "../src/prices.js";
+import { describe, expect, it, vi } from "vitest";
+import { copenhagenTime, fetchSpot, speak } from "../src/prices.js";
 
 describe("copenhagenTime", () => {
   it("uses CEST in summer", () => {
@@ -22,5 +22,18 @@ describe("speak", () => {
     const s = speak({ ...b, total: 3 }, false);
     expect(s).toContain("3 kroner per");
     expect(s).toContain("excludes your provider's own margin");
+  });
+});
+
+describe("fetchSpot", () => {
+  it("sends the end filter in Danish local time, not UTC", async () => {
+    const fetchMock = vi.fn(async () => new Response(JSON.stringify({ records: [{ DayAheadPriceDKK: 1000 }] })));
+    vi.stubGlobal("fetch", fetchMock);
+    // 18:49 UTC is 20:49 in Copenhagen (CEST)
+    const price = await fetchSpot(new Date("2026-10-10T18:49:00Z"), "DK2");
+    const url = new URL((fetchMock.mock.calls[0] as unknown as [string])[0]);
+    expect(url.searchParams.get("end")).toBe("2026-10-10T20:50");
+    expect(price).toBe(1);
+    vi.unstubAllGlobals();
   });
 });

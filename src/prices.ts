@@ -89,7 +89,8 @@ function pick(records: Awaited<ReturnType<typeof tariffs>>, code: string, nowLoc
 const hourly = (r: PricelistRecord, hour: number) => Number(r[`Price${hour + 1}`]);
 
 export async function fetchSpot(now: Date, area: string): Promise<number> {
-  const end = new Date(now.getTime() + 60_000).toISOString().slice(0, 16);
+  // The API's start/end filters are in Danish local time, not UTC.
+  const end = copenhagenTime(new Date(now.getTime() + 60_000)).iso.slice(0, 16);
   const [rec] = await getJson<{ DayAheadPriceDKK: number }>("DayAheadPrices", {
     filter: JSON.stringify({ PriceArea: area }),
     sort: "TimeUTC desc",
