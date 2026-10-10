@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "electricity price",
+      "invocationName": "danish power price",
       "intents": [
         {
           "name": "GetPriceIntent",

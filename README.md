@@ -1,6 +1,6 @@
 # Electricity Price (Alexa skill)
 
-"Alexa, ask electricity price how much power costs." Reads the current price per kWh for Zealand (DK2, zip 2765 Smørum) from the open [Energi Data Service](https://www.energidataservice.dk) API.
+"Alexa, ask danish power price how much power costs." Reads the current price per kWh for Zealand (DK2, zip 2765 Smørum) from the open [Energi Data Service](https://www.energidataservice.dk) API.
 
 Price = (spot + Radius tariff C for the current hour + Energinet transmission/system tariffs + elafgift + optional provider margin) x 1.25 VAT.
 
