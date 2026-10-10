@@ -15,9 +15,20 @@ pnpm price      # prints the current price and what Alexa would say
 pnpm build      # dist/index.js + lambda.zip
 ```
 
-## Deploy
+## Deploy (Terraform)
 
-1. Create a Node.js 20 Lambda, upload `lambda.zip`, handler `index.handler`, add the *Alexa Skills Kit* trigger. Optional env: `SUPPLIER_MARKUP_DKK`, `PRICE_AREA` (`DK1` for Jutland/Funen).
-2. In the [Alexa developer console](https://developer.amazon.com/alexa/console/ask) create a custom skill (locale English UK), paste `skill-package/interactionModels/custom/en-GB.json` into the JSON editor, set the endpoint to the Lambda ARN, build, and test. Skills in development are usable on your own Echo devices signed in with the same Amazon account.
+1. In the [Alexa developer console](https://developer.amazon.com/alexa/console/ask) create a custom skill (English UK, "Start from scratch"), paste `skill-package/interactionModels/custom/en-GB.json` into the JSON editor and save. Copy the **Skill ID**.
+2. Build and apply (needs AWS credentials):
+
+```bash
+pnpm build
+cd infra
+cp terraform.tfvars.example terraform.tfvars   # set skill_id, optionally supplier_markup_dkk
+terraform init && terraform apply
+```
+
+3. Paste the `lambda_arn` output into the skill's Endpoint (Default Region), save, build the model, and test. Skills in development work on your own Echo devices signed in with the same Amazon account.
+
+The skill itself (invocation name, model) is not managed by Terraform since there is no official AWS provider for it. Re-run `pnpm build && terraform apply` to ship code changes.
 
 Other zip codes: change `gridGln` / `gridTariffCode` in `src/prices.ts` (grid company and tariff code from the `DatahubPricelist` dataset).
