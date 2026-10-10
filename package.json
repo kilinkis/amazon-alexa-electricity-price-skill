@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "ask-sdk-core": "^2.14.0",
+    "ask-sdk-express-adapter": "^2.14.0",
     "ask-sdk-model": "^1.86.0"
   },
   "devDependencies": {
+    "@types/aws-lambda": "^8.10.164",
     "@types/node": "^20.14.0",
     "esbuild": "^0.24.0",
     "tsx": "^4.19.0",

@@ -31,4 +31,16 @@ terraform init && terraform apply
 
 The skill itself (invocation name, model) is not managed by Terraform since there is no official AWS provider for it. Re-run `pnpm build && terraform apply` to ship code changes.
 
+## Deploy (Vercel, alternative to AWS)
+
+`api/alexa.ts` serves the same skill as an HTTPS endpoint. It verifies Alexa's request signature and timestamp, and optionally the skill ID.
+
+```bash
+pnpm dlx vercel --prod     # run from this folder; set the project root to alexa-electricity-price if prompted
+```
+
+Then set env vars in the Vercel project (optional: `ALEXA_SKILL_ID`, `SUPPLIER_MARKUP_DKK`, `PRICE_AREA`) and redeploy. In the Alexa console set the endpoint type to **HTTPS**, enter `https://<project>.vercel.app/api/alexa`, and choose "My development endpoint is a sub-domain of a domain that has a wildcard certificate" (Vercel domains qualify). Set `ALEXA_SKILL_ID` to the Skill ID so other skills cannot call it.
+
+Set the Vercel function region close to Copenhagen (e.g. `fra1`) for lower latency.
+
 Other zip codes: change `gridGln` / `gridTariffCode` in `src/prices.ts` (grid company and tariff code from the `DatahubPricelist` dataset).
